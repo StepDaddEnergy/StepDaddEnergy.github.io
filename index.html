@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Jayson Stone builds practical open-source technology through Stoneforge Labs.">
+  <meta name="theme-color" content="#101216">
+  <meta property="og:title" content="Jayson Stone">
+  <meta property="og:description" content="Independent researcher and open-source technologist.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://stepdaddenergy.github.io/">
+  <title>Jayson Stone</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #fbfbfa;
+      --surface: #ffffff;
+      --text: #23262b;
+      --muted: #666c76;
+      --line: #e5e7eb;
+      --accent: #087ea4;
+      --accent-soft: #e5f5fa;
+      --shadow: 0 12px 36px rgb(20 25 35 / 8%);
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 5rem;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 400 1rem/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration-thickness: .08em;
+      text-underline-offset: .18em;
+    }
+
+    a:hover { text-decoration-thickness: .14em; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid color-mix(in srgb, var(--line) 80%, transparent);
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav-inner,
+    main,
+    footer {
+      width: min(100% - 2rem, 960px);
+      margin-inline: auto;
+    }
+
+    .nav-inner {
+      min-height: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      color: var(--text);
+      font-weight: 750;
+      text-decoration: none;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 1.2rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    nav a:hover { color: var(--text); }
+
+    main { padding: 5rem 0 3rem; }
+
+    h1, h2, h3 {
+      margin-top: 0;
+      line-height: 1.15;
+      letter-spacing: -.025em;
+    }
+
+    h1 {
+      margin-bottom: .25rem;
+      font-size: clamp(2.5rem, 8vw, 4.8rem);
+      font-weight: 350;
+    }
+
+    h1 strong { font-weight: 800; }
+
+    h2 {
+      margin-bottom: 1.4rem;
+      font-size: clamp(1.65rem, 4vw, 2.15rem);
+    }
+
+    h3 {
+      margin-bottom: .45rem;
+      font-size: 1.12rem;
+    }
+
+    .tagline {
+      margin: 0 0 2.8rem;
+      color: var(--muted);
+      font-size: 1.2rem;
+    }
+
+    .intro {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 2.4rem;
+      align-items: start;
+    }
+
+    .portrait {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: .6rem;
+      object-fit: cover;
+      box-shadow: var(--shadow);
+    }
+
+    .intro-copy p {
+      margin-top: 0;
+      font-size: 1.08rem;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .65rem;
+      margin-top: 1.4rem;
+    }
+
+    .links a {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: .45rem .8rem;
+      background: var(--surface);
+      color: var(--text);
+      font-size: .92rem;
+      font-weight: 650;
+      text-decoration: none;
+    }
+
+    .links a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    section {
+      margin-top: 5.5rem;
+      padding-top: .25rem;
+    }
+
+    .work {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      display: flex;
+      min-height: 180px;
+      flex-direction: column;
+      border: 1px solid var(--line);
+      border-radius: .75rem;
+      padding: 1.25rem;
+      background: var(--surface);
+      box-shadow: 0 4px 18px rgb(20 25 35 / 4%);
+    }
+
+    .card p {
+      margin: 0 0 1.25rem;
+      color: var(--muted);
+    }
+
+    .card-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: auto;
+      font-size: .92rem;
+      font-weight: 700;
+    }
+
+    .eyebrow {
+      margin-bottom: .5rem;
+      color: var(--accent);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    .updates {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .updates li {
+      display: grid;
+      grid-template-columns: 8rem 1fr;
+      gap: 1rem;
+      border-top: 1px solid var(--line);
+      padding: 1rem 0;
+    }
+
+    .updates time {
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 1.5rem 0 2.5rem;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #101216;
+        --surface: #171a20;
+        --text: #f1f3f5;
+        --muted: #a9afb9;
+        --line: #2b3038;
+        --accent: #45c2ef;
+        --accent-soft: #123442;
+        --shadow: 0 12px 36px rgb(0 0 0 / 30%);
+      }
+    }
+
+    @media (max-width: 650px) {
+      main { padding-top: 3.5rem; }
+      .nav-inner { align-items: flex-start; padding-block: .8rem; }
+      nav ul { gap: .7rem; font-size: .9rem; }
+      .intro { grid-template-columns: 1fr; }
+      .portrait { width: min(65vw, 230px); }
+      .work { grid-template-columns: 1fr; }
+      .updates li { grid-template-columns: 1fr; gap: .15rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="#about">Jayson Stone</a>
+      <nav aria-label="Primary navigation">
+        <ul>
+          <li><a href="#about">about</a></li>
+          <li><a href="#work">work</a></li>
+          <li><a href="https://scholar.google.com/citations?user=SrzMV7sAAAAJ">scholar</a></li>
+          <li><a href="https://github.com/StepDaddEnergy">github</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="about" aria-labelledby="name">
+      <h1 id="name"><strong>Jayson</strong> Stone</h1>
+      <p class="tagline">Independent researcher · Open-source technologist</p>
+
+      <div class="intro">
+        <img
+          class="portrait"
+          src="https://avatars.githubusercontent.com/u/56322529?v=4&amp;size=460"
+          width="460"
+          height="460"
+          alt="Jayson Stone"
+        >
+        <div class="intro-copy">
+          <p>
+            I build and share practical open-source technology through
+            <a href="https://github.com/Stoneforge-Labs">Stoneforge Labs</a>.
+            My current work focuses on local AI, language models, evaluation,
+            and the systems that make them useful.
+          </p>
+          <p>
+            Stoneforge Labs starts with AI, but its scope is broader: careful
+            experiments, useful tools, and honest results across technology.
+          </p>
+          <div class="links" aria-label="Profile links">
+            <a href="https://scholar.google.com/citations?user=SrzMV7sAAAAJ">Google Scholar</a>
+            <a href="https://github.com/StepDaddEnergy">GitHub</a>
+            <a href="https://github.com/Stoneforge-Labs">Stoneforge Labs</a>
+            <a href="https://huggingface.co/StoneforgeLabs">Hugging Face</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="work" aria-labelledby="work-title">
+      <h2 id="work-title">Selected work</h2>
+      <div class="work">
+        <article class="card">
+          <div class="eyebrow">AI systems · 2026</div>
+          <h3>Gemma Rig</h3>
+          <p>Measured Gemma 4 serving, evaluation, and agent-workflow results on an RTX 5090.</p>
+          <div class="card-links">
+            <a href="https://stoneforge-labs.github.io/gemma-rig/">Results</a>
+            <a href="https://github.com/Stoneforge-Labs/gemma-rig">Source</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="eyebrow">Open-source lab</div>
+          <h3>Stoneforge Labs</h3>
+          <p>Open projects, reproducible results, and practical tools for AI and the wider technology community.</p>
+          <div class="card-links">
+            <a href="https://github.com/Stoneforge-Labs">GitHub</a>
+            <a href="https://huggingface.co/StoneforgeLabs">Models</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="eyebrow">AI memory</div>
+          <h3>TinyCortex</h3>
+          <p>An open project exploring fast, useful memory for personal AI systems.</p>
+          <div class="card-links">
+            <a href="https://github.com/StepDaddEnergy/tinycortex">Source</a>
+            <a href="https://tinyhumans.gitbook.io/neocortex/">Docs</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="eyebrow">Research profile</div>
+          <h3>Google Scholar</h3>
+          <p>Research interests and future publications under the Jayson Stone profile.</p>
+          <div class="card-links">
+            <a href="https://scholar.google.com/citations?user=SrzMV7sAAAAJ">View profile</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="updates-title">
+      <h2 id="updates-title">Updates</h2>
+      <ul class="updates">
+        <li>
+          <time datetime="2026-07">July 2026</time>
+          <span>Published the first <a href="https://stoneforge-labs.github.io/gemma-rig/">Gemma Rig results</a>.</span>
+        </li>
+        <li>
+          <time datetime="2026-07">July 2026</time>
+          <span>Launched <a href="https://github.com/Stoneforge-Labs">Stoneforge Labs</a> for open technical work.</span>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Jayson Stone · Hosted on GitHub Pages
+  </footer>
+</body>
+</html>
